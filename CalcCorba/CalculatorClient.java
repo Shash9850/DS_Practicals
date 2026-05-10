@@ -1,0 +1,55 @@
+import CalculatorApp.*;
+import org.omg.CosNaming.*;
+import org.omg.CORBA.*;
+
+import java.util.Scanner;
+
+class CalculatorClient {
+
+    public static void main(String args[]) {
+
+        try {
+
+            // Initialize ORB
+            ORB orb = ORB.init(args, null);
+
+            // Get naming context reference
+            org.omg.CORBA.Object objRef =
+                    orb.resolve_initial_references("NameService");
+
+            NamingContextExt ncRef =
+                    NamingContextExtHelper.narrow(objRef);
+
+            // Resolve object reference
+            String name = "Calculator";
+
+            Calculator calc =
+                    CalculatorHelper.narrow(
+                            ncRef.resolve_str(name));
+
+            Scanner sc = new Scanner(System.in);
+
+            System.out.print("Enter first number: ");
+            float a = sc.nextFloat();
+
+            System.out.print("Enter second number: ");
+            float b = sc.nextFloat();
+
+            System.out.println("Addition = "
+                    + calc.add(a, b));
+
+            System.out.println("Subtraction = "
+                    + calc.subtract(a, b));
+
+            System.out.println("Multiplication = "
+                    + calc.multiply(a, b));
+
+            System.out.println("Division = "
+                    + calc.divide(a, b));
+
+        } catch (Exception e) {
+
+            System.out.println("Client Error: " + e);
+        }
+    }
+}

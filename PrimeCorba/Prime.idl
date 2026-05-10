@@ -1,0 +1,7 @@
+module PrimeApp {
+
+    interface Prime {
+
+        string checkPrime(in long num);
+    };
+};

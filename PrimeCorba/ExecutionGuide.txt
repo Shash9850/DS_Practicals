@@ -1,0 +1,74 @@
+Compilation
+Generate Files
+idlj -fall Prime.idl
+Compile
+javac *.java PrimeApp/*.java
+Execution
+Step 1: Start ORBD
+orbd -ORBInitialPort 1060 -ORBInitialHost localhost
+
+Keep terminal running.
+
+Step 2: Run Server
+
+Open another terminal:
+
+java -cp . PrimeServer -ORBInitialPort 1060 -ORBInitialHost localhost
+
+Expected Output:
+
+Prime Server Ready...
+Step 3: Run Client
+
+Open another terminal:
+
+java -cp . PrimeClient -ORBInitialPort 1060 -ORBInitialHost localhost
+Example Output
+Prime Number
+Enter a number: 7
+7 is PRIME
+Non-Prime Number
+Enter a number: 10
+10 is NOT PRIME
+CORBA Architecture
+Client  --->  ORB  --->  Remote Object(Server)
+How Object Brokering Works
+
+The ORB:
+
+Accepts client request
+Locates remote object
+Invokes remote method
+Returns result to client
+
+Thus CORBA demonstrates object brokering.
+
+Advantages
+Platform independent
+Distributed communication
+Reusable remote services
+Language independent
+Disadvantages
+Complex setup
+Requires middleware
+Slower than local calls
+Viva Questions & Answers
+What is CORBA?
+
+CORBA is middleware for distributed object communication.
+
+What is ORB?
+
+ORB acts as broker between client and remote object.
+
+What is IDL?
+
+IDL defines distributed interfaces independent of programming language.
+
+Why use CORBA?
+
+To enable communication between distributed objects.
+
+What is object brokering?
+
+Object brokering means enabling communication between distributed objects through middleware like ORB.

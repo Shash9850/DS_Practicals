@@ -1,0 +1,220 @@
+
+
+
+
+
+Compilation
+Generate Files
+idlj -fall OddEven.idl
+Compile
+javac *.java OddEvenApp/*.java
+Execution
+Step 1: Start ORBD
+orbd -ORBInitialPort 1050
+
+Keep terminal running.
+
+Step 2: Run Server
+
+Open another terminal:
+
+java -cp . OddEvenServer -ORBInitialPort 1050 -ORBInitialHost localhost
+
+Expected Output:
+
+OddEven Server Ready...
+Step 3: Run Client
+
+Open another terminal:
+
+java -cp . OddEvenClient -ORBInitialPort 1050 -ORBInitialHost localhost
+Example Output
+Even Number
+Enter a number: 10
+10 is EVEN
+Odd Number
+Enter a number: 7
+7 is ODD
+CORBA Architecture
+Client  --->  ORB  --->  Remote Object(Server)
+How Object Brokering Works
+
+The ORB:
+
+Receives client request
+Locates remote object
+Invokes remote method
+Returns result
+
+Thus CORBA demonstrates object brokering.
+
+Advantages
+Platform independent
+Distributed communication
+Language independent
+Reusable remote services
+Disadvantages
+Complex setup
+Requires middleware
+Slower than local calls
+Viva Questions & Answers
+What is CORBA?
+
+CORBA is middleware for distributed object communication.
+
+What is ORB?
+
+ORB acts as broker between client and remote object.
+
+What is IDL?
+
+IDL defines distributed interfaces independent of programming language.
+
+Why use CORBA?
+
+To enable distributed communication between objects.
+
+What is object brokering?
+
+Object brokering means enabling communication between distributed objects through middleware like ORB.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fastest Fix (Recommended)
+
+Use a DIFFERENT port number instead of 1050.
+
+Step 1: Start ORBD on New Port
+
+Open NEW terminal:
+
+orbd -ORBInitialPort 1060 -ORBInitialHost localhost
+
+Keep this terminal OPEN.
+
+If successful:
+
+no error
+terminal remains running silently
+Step 2: Run Server Using SAME Port
+
+Open another terminal:
+
+E:
+cd DS_Cheats\OddEvenCorba
+
+Run:
+
+java -cp . OddEvenServer -ORBInitialPort 1060 -ORBInitialHost localhost
+
+Expected:
+
+OddEven Server Ready...
+Step 3: Run Client Using SAME Port
+
+Open third terminal:
+
+E:
+cd DS_Cheats\OddEvenCorba
+
+Run:
+
+java -cp . OddEvenClient -ORBInitialPort 1060 -ORBInitialHost localhost
+Important
+
+ALL THREE must use SAME port:
+
+1060
+ORBD
+Server
+Client
+Why This Happened
+
+CORBA internally also uses:
+
+1049
+
+If another ORBD instance is already running:
+
+BindException
+Address already in use
+
+occurs.
+
+Alternative Fix (Optional)
+
+You can stop old ORBD process:
+
+taskkill /F /IM orbd.exe
+
+But using a new port like 1060 is easier and safer for practicals.
+
+Final Correct Commands
+Terminal 1
+orbd -ORBInitialPort 1060 -ORBInitialHost localhost
+Terminal 2
+java -cp . OddEvenServer -ORBInitialPort 1060 -ORBInitialHost localhost
+Terminal 3
+java -cp . OddEvenClient -ORBInitialPort 1060 -ORBInitialHost localhost
+Expected Output
+Enter a number: 8
+8 is EVEN
+
+or
+
+Enter a number: 7
+7 is ODD

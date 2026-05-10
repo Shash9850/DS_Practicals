@@ -1,0 +1,140 @@
+Here’s a complete program to develop a Distributed System using OpenMP to find the sum of N elements in an array by distributing work among multiple processors/threads.
+
+The program also displays:
+
+Intermediate sums calculated by each processor/thread
+Final total sum
+Aim
+
+To develop a distributed application using OpenMP to find the sum of N elements in an array by distributing array elements among multiple processors.
+
+Theory
+
+OpenMP (Open Multi-Processing) is an API that supports parallel programming in C/C++.
+
+In this program:
+
+Array elements are divided among multiple threads/processors.
+Each thread calculates a partial sum.
+Partial sums are combined to produce the final sum.
+
+This demonstrates parallel and distributed computation.
+
+Algorithm
+Read number of elements.
+Read array elements.
+Create parallel threads using OpenMP.
+Divide array among threads.
+Each thread computes partial sum.
+Display intermediate sums.
+Combine all partial sums.
+Display final sum.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Compilation
+Use GCC with OpenMP support:
+gcc -fopenmp ArraySumOpenMP.c -o sum
+
+Execution
+./sum
+On Windows (MinGW):
+sum.exe
+
+Example Output
+Enter number of elements: 8Enter array elements:1 2 3 4 5 6 7 8Thread 0 calculated partial sum = 10Thread 1 calculated partial sum = 26Final Sum = 36
+
+Working Explanation
+Suppose array:
+1 2 3 4 5 6 7 8
+If 2 threads are used:
+ThreadElementsPartial Sum01 2 3 41015 6 7 826
+Final Sum:
+10 + 26 = 36
+
+OpenMP Directive Used
+Parallel Region
+#pragma omp parallel
+Creates multiple threads.
+
+Work Sharing
+#pragma omp for
+Divides loop iterations among threads.
+
+Critical Section
+#pragma omp critical
+Prevents race conditions while updating shared variable.
+
+Advantages
+
+
+Faster computation
+
+
+Parallel execution
+
+
+Efficient CPU utilization
+
+
+Simple parallel programming
+
+
+
+Disadvantages
+
+
+Synchronization overhead
+
+
+Requires multi-core processors
+
+
+Load balancing issues possible
+
+
+
+Viva Questions & Answers
+What is OpenMP?
+OpenMP is an API for parallel programming in C/C++ and Fortran.
+
+What is parallel processing?
+Executing multiple tasks simultaneously using multiple processors/threads.
+
+Why use OpenMP?
+To improve performance using parallel execution.
+
+What is a thread?
+A lightweight execution unit within a process.
+
+What is a critical section?
+A section where only one thread can execute at a time.
+
+Applications
+
+
+Scientific computing
+
+
+Parallel simulations
+
+
+Distributed systems
+
+
+Large-scale numerical computations
+

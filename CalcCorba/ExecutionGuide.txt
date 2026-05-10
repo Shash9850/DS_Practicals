@@ -1,0 +1,103 @@
+Compilation and Execution
+
+Step 1: Generate Java Files from IDL
+idlj -fall Calculator.idl
+
+Step 2: Compile All Files
+javac *.java CalculatorApp/*.java
+
+Step 3: Start ORBD Service
+orbd -ORBInitialPort 1050
+Keep this terminal running.
+
+Step 4: Run Server
+Open another terminal:
+java CalculatorServer -ORBInitialPort 1050
+Output:
+Calculator Server Ready...
+
+Step 5: Run Client
+Open another terminal:
+java CalculatorClient -ORBInitialPort 1050
+
+Example Output
+Client Side
+Enter first number: 20Enter second number: 5Addition = 25.0Subtraction = 15.0Multiplication = 100.0Division = 4.0
+
+CORBA Architecture
+Client  --->  ORB  --->  Server Object
+
+How Object Brokering Works
+The ORB (Object Request Broker):
+
+
+Accepts client request
+
+
+Locates remote object
+
+
+Sends request to server object
+
+
+Returns result to client
+
+
+Thus CORBA acts as middleware between client and server.
+
+Viva Questions & Answers
+What is CORBA?
+CORBA is a middleware technology for communication between distributed objects.
+
+What is ORB?
+ORB (Object Request Broker) acts as a broker between client and server objects.
+
+What is IDL?
+IDL (Interface Definition Language) defines interfaces independent of programming language.
+
+Why use CORBA?
+
+
+Distributed computing
+
+
+Language independence
+
+
+Platform independence
+
+
+Object brokering
+
+
+
+What is Naming Service?
+It helps clients locate remote objects using names.
+
+Advantages
+
+
+Platform independent
+
+
+Language independent
+
+
+Supports distributed applications
+
+
+Reusable distributed objects
+
+
+
+Limitation
+
+
+Complex setup
+
+
+Slower than local calls
+
+
+Modern systems now prefer REST/gRPC/microservices
+

@@ -1,0 +1,88 @@
+Compilation
+Generate Java Files
+idlj -fall StringOperation.idl
+Compile
+javac *.java StringApp/*.java
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Correct Execution Order
+Step 1: Open CMD Terminal 1
+
+Run:
+
+orbd -ORBInitialPort 1050
+
+IMPORTANT:
+
+Keep this terminal OPEN
+Do NOT close it
+
+If successful, terminal will remain running silently.
+
+Step 2: Open Another Terminal
+
+Go to your project folder:
+
+cd E:\DS_Cheats\StringOpCorba
+
+Run server:
+
+java -cp . StringServer -ORBInitialPort 1050 -ORBInitialHost localhost
+
+Expected Output:
+
+String Server Ready...
+Step 3: Open Third Terminal
+
+Run client:
+
+java -cp . StringClient -ORBInitialPort 1050 -ORBInitialHost localhost
+Expected Output
+Enter a string: Hello
+
+String Length = 5
+Reverse String = olleH
+Uppercase = HELLO
+Lowercase = hello
+Why This Error Happened
+
+CORBA requires a Naming Service.
+
+orbd provides:
+
+Object registration
+Object lookup
+Naming service
+
+Without it:
+
+Server cannot register remote object
+
+and connection gets refused.
+
+Important Viva Question
+Why is orbd required?
+
+Answer:
+
+orbd provides CORBA Naming Service that helps clients locate remote distributed objects.
+
+Quick Flow Diagram
+Client ---> ORBD Naming Service ---> Server Object
